@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDU-BRIDGE | About</title>
+  <link rel="stylesheet" href="css style/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="container header-content">
+      <h1>EDU-BRIDGE</h1>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="accessibility-toolbar" role="region" aria-label="Accessibility controls">
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button id="tts-toggle" aria-label="Toggle text-to-speech"><i class="fas fa-volume-up"></i></button>
+    <button id="font-increase"><i class="fas fa-plus"></i></button>
+    <button id="font-decrease"><i class="fas fa-minus"></i></button>
+    <button id="font-reset"><i class="fas fa-undo"></i></button>
+  </div>
+
+  <main id="main-content" tabindex="-1">
+    <section aria-labelledby="about-heading">
+      <h2 id="about-heading">Our Mission</h2>
+      <p class="tts-content">
+        EDU-BRIDGE is dedicated to removing barriers in education. We believe every learner deserves equal access to knowledge, regardless of physical, sensory, or cognitive ability.
+      </p>
+      <p class="tts-content">
+        Built with <strong>WCAG 2.1 AA compliance</strong> from day one, we support screen readers, keyboard navigation, text-to-speech, and adaptive layouts.
+      </p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p class="tts-content">© 2025 EDU-BRIDGE. WCAG 2.1 AA Compliant.</p>
+  </footer>
+
+  <script src="js/accessibility.js"></script>
+  <script src="js/nav-highlight.js"></script>
+</body>
+</html>

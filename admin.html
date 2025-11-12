@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDU-BRIDGE | Admin Login</title>
+  <link rel="stylesheet" href="css style/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="container header-content">
+      <h1>EDU-BRIDGE</h1>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin.html" aria-current="page">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="accessibility-toolbar" role="region" aria-label="Accessibility controls">
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button id="tts-toggle" aria-label="Toggle text-to-speech"><i class="fas fa-volume-up"></i></button>
+    <button id="font-increase"><i class="fas fa-plus"></i></button>
+    <button id="font-decrease"><i class="fas fa-minus"></i></button>
+    <button id="font-reset"><i class="fas fa-undo"></i></button>
+  </div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="admin-login" aria-labelledby="admin-heading">
+      <h2 id="admin-heading">Admin Login</h2>
+      <form id="admin-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p class="tts-content">© 2025 EDU-BRIDGE. WCAG 2.1 AA Compliant.</p>
+  </footer>
+
+  <script src="js/accessibility.js"></script>
+  <script>
+    document.getElementById('admin-form').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('login-status').textContent = 'Login successful! (Demo)';
+    });
+  </script>
+</body>
+</html>
