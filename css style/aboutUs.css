@@ -1,0 +1,73 @@
+body .team{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+body .president{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+
+}
+
+body .president img{
+    width: 175px;
+    padding-top: 20px;
+    border-radius: 100%;
+}
+
+body .president .role{
+    color: #003cffad;
+    font-weight: bold;
+
+}
+
+body .president p{
+    color: #464343;
+    padding-top: 15px;
+    
+}
+
+body .president div{
+    height: 500px;
+    margin: 40px;
+    width: 350px;
+    background-color: #80808044;
+    box-shadow: 5px 5px 15px;
+    border-radius: 30px;
+}
+
+body .executive{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+body .executive img{
+    width: 175px;
+    padding-top: 20px;
+    border-radius: 100%;
+}
+
+body .executive .role{
+    color: #003cffad;
+    font-weight: bold;
+
+}
+
+body .executive p{
+    color: #464343;
+    padding-top: 15px;
+}
+
+body .executive div{
+    height: 500px;
+    margin: 40px;
+    width: 350px;
+    background-color: #80808044;
+    box-shadow: 5px 5px 15px;
+    border-radius: 30px;
+}

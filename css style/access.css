@@ -1,0 +1,113 @@
+/* Focus */
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #e0e0e0;
+  --border: #444;
+  --primary: #4da6ff;
+}
+[data-theme="dark"] .toggle-password {
+  color: #aaa;
+}
+
+/* Text-to-Speech Highlight */
+.speak {
+  background: rgba(255, 255, 0, 0.3);
+  transition: background 0.3s;
+}
+
+/* -------------------------------------------------
+   Accessibility Toggle – CENTERED, NO OUTER BORDER
+   ------------------------------------------------- */
+/* -------------------------------------------------
+   Accessibility Toggle – ICON BUTTONS, CENTERED
+   ------------------------------------------------- */
+.access-toggle {
+  position: absolute;
+  top: 1.5rem;
+  left: 80%;
+  height: 40px;
+  transform: translateX(-50%);
+  background: var(--card);
+  border-radius: 2rem;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  width: max-content;
+}
+
+.access-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--border);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.access-btn:hover,
+.access-btn[aria-pressed="true"] {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  
+}
+
+.access-btn i {
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile: Bottom-center, vertical */
+@media (max-width: 480px) {
+  .access-toggle {
+    left: 75%;
+    right: auto;
+    transform: translateX(-50%);
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  .access-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDU-BRIDGE | Admin Dashboard</title>
+    <link rel="stylesheet" href="css style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .admin-panel {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 20px;
+      }
+      .tab {
+        display: none;
+      }
+      .tab.active {
+        display: block;
+      }
+      .tab-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .tab-btn:hover,
+      .tab-btn:focus {
+        background: var(--secondary);
+      }
+      .tab-btn.active {
+        background: #28a745;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        background: #f9f9f9;
+        border: 2px solid var(--border);
+      }
+      body.dark-mode table {
+        background: #222;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      th {
+        background: var(--primary);
+        color: white;
+      }
+      tr:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+      body.dark-mode tr:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .video-item {
+        background: #fff;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      body.dark-mode .video-item {
+        background: #222;
+      }
+      .video-item video {
+        width: 200px;
+        border-radius: 6px;
+      }
+      .video-actions button {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .video-actions button:hover {
+        background: #c82333;
+      }
+
+      .upload-area {
+        border: 3px dashed var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .upload-area:hover,
+      .upload-area.dragover {
+        border-color: var(--primary);
+        background: #f0f8ff;
+      }
+      body.dark-mode .upload-area:hover {
+        background: #1a1a1a;
+      }
+
+      .preview video {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1rem;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header role="banner">
+      <div class="header-top">
+        <div class="container header-content">
+          <h1>EDU-BRIDGE</h1>
+          <nav role="navigation" aria-label="Main navigation">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="features.html">Features</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li class="auth-item">
+                <span id="admin-name"></span>
+                <button
+                  id="logout-btn"
+                  style="
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 15px;
+                    cursor: pointer;
+                  "
+                >
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+                <div
+                  class="accessibility-toolbar-inline"
+                  role="region"
+                  aria-label="Accessibility controls"
+                >
+                  <button
+                    id="dark-mode-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                  >
+                    <i class="fas fa-moon"></i>
+                  </button>
+                  <button
+                    id="tts-toggle"
+                    aria-label="Toggle text-to-speech"
+                    aria-pressed="false"
+                  >
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="hero" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <h2 id="hero-heading">Admin Dashboard</h2>
+          <p class="tts-content">
+            Manage users, upload videos, and monitor system.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="admin-panel" tabindex="-1">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="users">Users</button>
+        <button class="tab-btn" data-tab="upload">Upload Video</button>
+        <button class="tab-btn" data-tab="videos">Videos</button>
+      </div>
+
+      <!-- Users Tab -->
+      <section id="users" class="tab active">
+        <h2>Registered Users</h2>
+        <table aria-label="User list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody id="user-list">
+            <!-- Filled by JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Upload Tab -->
+      <section id="upload" class="tab">
+        <h2>Upload Video with Captions</h2>
+        <div class="upload-area" id="drop-area">
+          <p><i class="fas fa-cloud-upload-alt fa-3x"></i></p>
+          <p>Drag & drop video here or <strong>click to select</strong></p>
+          <input type="file" id="video-input" accept="video/*" hidden />
+        </div>
+        <div id="preview" class="preview"></div>
+
+        <form id="caption-form" style="margin-top: 1rem; display: none">
+          <div class="form-group">
+            <label for="title">Video Title</label>
+            <input type="text" id="title" required />
+          </div>
+          <div class="form-group">
+            <label for="caption">Caption (Subtitle Text)</label>
+            <textarea id="caption" rows="4" required></textarea>
+          </div>
+          <button type="submit">Upload Video</button>
+        </form>
+        <p id="upload-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- Videos Tab -->
+      <section id="videos" class="tab">
+        <h2>Uploaded Videos</h2>
+        <div id="video-list">
+          <!-- Filled by JS -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+      <div class="footer-content">
+        <p class="tts-content">© 2025 EDU-BRIDGE. All rights reserved.</p>
+        <p class="tts-content">
+          Proudly compliant with <strong>WCAG 2.1 AA</strong>.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/accessibility.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

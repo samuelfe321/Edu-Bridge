@@ -5,33 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EDU-BRIDGE | About</title>
   <link rel="stylesheet" href="css style/style.css" />
+  <link rel="stylesheet" href="css style/aboutUs.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Header -->
   <header role="banner">
-    <div class="container header-content">
-      <h1>EDU-BRIDGE</h1>
-      <nav role="navigation" aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="admin.html">Admin</a></li>
-        </ul>
-      </nav>
+    <div class="header-top">
+      <div class="container header-content">
+        <h1>EDU-BRIDGE</h1>
+        <nav role="navigation" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="auth-item">
+              <a href="userLogin.html">Sign in</a>
+              <!-- Accessibility Toolbar – Right next to Sign in -->
+              <div class="accessibility-toolbar-inline" role="region" aria-label="Accessibility controls">
+                <button id="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                  <i class="fas fa-moon"></i>
+                </button>
+                <button id="tts-toggle" aria-label="Toggle text-to-speech" aria-pressed="false">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero (inside header) -->
+    <div class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h2 id="hero-heading">About <strong>EDU-BRIDGE</strong></h2>
+        <p class="tts-content">
+          Dedicated to accessible education for all.
+        </p>
+      </div>
     </div>
   </header>
-
-  <div class="accessibility-toolbar" role="region" aria-label="Accessibility controls">
-    <button id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-    <button id="tts-toggle" aria-label="Toggle text-to-speech"><i class="fas fa-volume-up"></i></button>
-    <button id="font-increase"><i class="fas fa-plus"></i></button>
-    <button id="font-decrease"><i class="fas fa-minus"></i></button>
-    <button id="font-reset"><i class="fas fa-undo"></i></button>
-  </div>
 
   <main id="main-content" tabindex="-1">
     <section aria-labelledby="about-heading">
@@ -43,10 +60,98 @@
         Built with <strong>WCAG 2.1 AA compliance</strong> from day one, we support screen readers, keyboard navigation, text-to-speech, and adaptive layouts.
       </p>
     </section>
+    <section>
+      <div class="team">
+        <h1>MEET OUR TEAM</h1>
+      </div>
+      <div class="office-board">
+        <div class="president">
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            
+          </div>
+        </div>
+
+        <div class="executive">
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+
+        <div class="executive">
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+
+          <div>
+            <img src="/img/LOGO.png" alt="" />
+            <h1>Samuel collins</h1>
+            <p class="role">Programming guru</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Enhanced Footer – Tight Spacing -->
   <footer role="contentinfo">
-    <p class="tts-content">© 2025 EDU-BRIDGE. WCAG 2.1 AA Compliant.</p>
+    <div class="footer-content">
+      <p class="tts-content">© 2025 EDU-BRIDGE. All rights reserved.</p>
+      <p class="tts-content">
+        Proudly compliant with <strong>WCAG 2.1 AA</strong> accessibility standards.
+      </p>
+      <p class="tts-content footer-links">
+        <a href="privacy.html">Privacy Policy</a> • 
+        <a href="terms.html">Terms of Use</a> • 
+        <a href="accessibility.html">Accessibility Statement</a>
+      </p>
+      <p class="tts-content">
+        <strong>Contact us:</strong> 
+        <a href="mailto:support@edubridge.ng" aria-label="Email support">support@edubridge.ng</a> | 
+        <a href="tel:+2348000000000" aria-label="Call us">+234 800 000 0000</a>
+      </p>
+      <p class="tts-content social-links">
+        <a href="https://x.com/edubridge" target="_blank" rel="noopener" aria-label="Follow EDU-BRIDGE on X (Twitter)">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://facebook.com/edubridge" target="_blank" rel="noopener" aria-label="Like EDU-BRIDGE on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://instagram.com/edubridge" target="_blank" rel="noopener" aria-label="Follow EDU-BRIDGE on Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com/company/edubridge" target="_blank" rel="noopener" aria-label="Connect with EDU-BRIDGE on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </p>
+      <p class="tts-content">
+        <small>
+          <em>Empowering every learner in Nigeria and beyond — <strong>no one left behind</strong>.</em>
+        </small>
+      </p>
+    </div>
   </footer>
 
   <script src="js/accessibility.js"></script>
