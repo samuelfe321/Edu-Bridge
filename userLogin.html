@@ -150,14 +150,15 @@
         // ==============================================
         // 1. ADD DEMO USER (ONCE)
         // ==============================================
+
         (function addDemoUser() {
-          const demoUser = {
-            name: "Chukwudi Okeke",
-            email: "user@edubridge.ng",
-            password: "user123",
+          let demoUser = {
+            name: "Collins Samuel",
+            email: "Samuel@gmail.com",
+            password: "556678",
             role: "student",
             joined: "2025-01-10T00:00:00Z",
-          };
+          };          
 
           let users = JSON.parse(localStorage.getItem("users") || "[]");
           if (!users.some((u) => u.email === demoUser.email)) {
@@ -194,7 +195,7 @@
 
           if (user) {
             localStorage.setItem("currentUser", JSON.stringify(user));
-            statusMsg.textContent = "Login successful! Redirecting...";
+            statusMsg.textContent = "Login successful!";
             statusMsg.style.color = "#2e7d32";
             setTimeout(() => {
               window.location.href = "profile.html"; // EXACT REDIRECT
@@ -206,8 +207,8 @@
         });
 
         // Optional: Pre-fill demo credentials
-        emailInput.value = "user@edubridge.ng";
-        passwordInput.value = "user123";
+        emailInput.value = "Samuel@gmail.com";
+        passwordInput.value = "556678";
       })();
     </script>
   </body>

@@ -54,11 +54,11 @@
   }
 
   // Video Upload
-  const dropArea = document.getElementById("drop-area");
+  const dropArea = document.getElementById("video-drop-area");
   const videoInput = document.getElementById("video-input");
-  const preview = document.getElementById("preview");
-  const form = document.getElementById("caption-form");
-  const status = document.getElementById("upload-status");
+  const preview = document.getElementById("video-preview");
+  const form = document.getElementById("video-upload-form");
+  const status = document.getElementById("video-list");
 
   let selectedFile = null;
 

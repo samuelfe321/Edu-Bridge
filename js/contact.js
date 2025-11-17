@@ -1,10 +1,10 @@
+contact.js
 document.getElementById('contact-form')?.addEventListener('submit', async e => {
   e.preventDefault();
   const status = document.getElementById('form-status');
   const btn = e.target.querySelector('button');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-
   try {
     // Simulate API
     await new Promise(r => setTimeout(r, 1000));
