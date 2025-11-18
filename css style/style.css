@@ -204,28 +204,26 @@ body.dark-mode .accessibility-toolbar-inline {
   border-color: rgba(255, 255, 255, 0.2);
 }
 .accessibility-toolbar-inline button {
-  background: transparent;
-  color: white;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.accessibility-toolbar-inline button[aria-pressed="true"] {
-  background: #28a745;
-}
-.accessibility-toolbar-inline button:hover,
-.accessibility-toolbar-inline button:focus {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
-  outline: 2px solid var(--focus);
-}
+        background: transparent;
+        color: white;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .accessibility-toolbar-inline button[aria-pressed="true"] {
+        background: #28a745;
+      }
+      .accessibility-toolbar-inline button:hover,
+      .accessibility-toolbar-inline button:focus {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+        outline: 2px solid var(--focus);
+      }
 
 
 /* Hero */
@@ -295,7 +293,7 @@ p {
 body.dark-mode .card {
   background: #222;
 }
-card:hover,
+.card:hover,
 .card:focus {
   background: var(--primary);
   color: white;
@@ -444,7 +442,6 @@ body.dark-mode .social-links a:focus {
   }
 }
 
-/* Perfect Mobile Header – Logo & Hamburger Side by Side */
 .mobile-header-wrapper {
   display: flex;
   align-items: center;

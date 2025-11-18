@@ -373,6 +373,12 @@ body[data-theme="dark"] .topbar { background: #1e1e1e; }
 
 /* Show hamburger on mobile */
 @media (max-width: 992px) {
+  .topbar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
   .hamburger-btn {
     display: block !important;
   }
@@ -387,7 +393,6 @@ body[data-theme="dark"] .topbar { background: #1e1e1e; }
   }
 }
 
-/* ADMIN DASHBOARD - 100% RESPONSIVE & FIXED */
 :root {
   --primary: #0066cc;
   --sidebar-width: 280px;
@@ -567,13 +572,12 @@ body[data-theme="dark"] .topbar-right .access-btn {
     display: block !important;
   }
 }
-
-/* Mobile items inside dropdown */
 .mobile-only-items {
   display: none;
 }
 .mobile-only-items a {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
