@@ -1,366 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EDU-BRIDGE | Admin Dashboard</title>
-    <link rel="stylesheet" href="css style/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <style>
-      .admin-panel {
-        max-width: 1000px;
-        margin: 2rem auto;
-        padding: 0 20px;
-      }
-      .tab {
-        display: none;
-      }
-      .tab.active {
-        display: block;
-      }
-      .tab-buttons {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
-      }
-      .tab-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: bold;
-      }
-      .tab-btn:hover,
-      .tab-btn:focus {
-        background: var(--secondary);
-      }
-      .tab-btn.active {
-        background: #28a745;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDU-BRIDGE | Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css style/admin-dashboard.css" />
+</head>
+<body data-theme="light">
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-        background: #f9f9f9;
-        border: 2px solid var(--border);
-      }
-      body.dark-mode table {
-        background: #222;
-      }
-      th,
-      td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid var(--border);
-      }
-      th {
-        background: var(--primary);
-        color: white;
-      }
-      tr:hover {
-        background: rgba(0, 0, 0, 0.05);
-      }
-      body.dark-mode tr:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
+  <div class="dashboard-wrapper">
 
-      .video-item {
-        background: #fff;
-        border: 2px solid var(--border);
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-      body.dark-mode .video-item {
-        background: #222;
-      }
-      .video-item video {
-        width: 200px;
-        border-radius: 6px;
-      }
-      .video-actions button {
-        background: #dc3545;
-        color: white;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-right: 5px;
-      }
-      .video-actions button:hover {
-        background: #c82333;
-      }
-
-      .upload-area {
-        border: 3px dashed var(--border);
-        border-radius: 12px;
-        padding: 2rem;
-        text-align: center;
-        margin: 1.5rem 0;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .upload-area:hover,
-      .upload-area.dragover {
-        border-color: var(--primary);
-        background: #f0f8ff;
-      }
-      body.dark-mode .upload-area:hover {
-        background: #1a1a1a;
-      }
-
-      .preview video {
-        width: 100%;
-        max-width: 500px;
-        margin-top: 1rem;
-        border-radius: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Header -->
-    <header role="banner">
-      <div class="header-top">
-        <div class="container header-content">
-          <h1>EDU-BRIDGE</h1>
-          <nav role="navigation" aria-label="Main navigation">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="features.html">Features</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li class="auth-item">
-                <span id="admin-name"></span>
-                <button
-                  id="logout-btn"
-                  style="
-                    background: none;
-                    border: none;
-                    color: white;
-                    font-size: 15px;
-                    cursor: pointer;
-                  "
-                >
-                  <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-                <div
-                  class="accessibility-toolbar-inline"
-                  role="region"
-                  aria-label="Accessibility controls"
-                >
-                  <button
-                    id="dark-mode-toggle"
-                    aria-label="Toggle dark mode"
-                    aria-pressed="false"
-                  >
-                    <i class="fas fa-moon"></i>
-                  </button>
-                  <button
-                    id="tts-toggle"
-                    aria-label="Toggle text-to-speech"
-                    aria-pressed="false"
-                  >
-                    <i class="fas fa-volume-up"></i>
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="hero" aria-labelledby="hero-heading">
-        <div class="hero-content">
-          <h2 id="hero-heading">Admin Dashboard</h2>
-          <p class="tts-content">
-            Manage users, upload videos, and monitor system.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <main id="main-content" class="admin-panel" tabindex="-1">
-      <div class="tab-buttons">
-        <button class="tab-btn active" data-tab="users">Users</button>
-        <button class="tab-btn" data-tab="courses">Courses</button>
-        <button class="tab-btn" data-tab="videos">Videos</button>
-        <button class="tab-btn" data-tab="books">Books</button>
-        <button class="tab-btn" data-tab="blogs">Blogs</button>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-graduation-cap"></i> EDU-BRIDGE</h2>
+        <button class="sidebar-close" aria-label="Close menu">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
 
-      <!-- Users Tab -->
-      <section id="users" class="tab active">
-        <h2>Registered Users</h2>
-        <table aria-label="User list">
-          <thead>
-            <tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th></tr>
-          </thead>
-          <tbody id="user-list"><!-- Filled by JS --></tbody>
-        </table>
-      </section>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#" class="active" data-section="overview"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</a></li>
+          <li><a href="#" data-section="users"><i class="fas fa-users"></i> User Management</a></li>
+          <li><a href="#" data-section="courses"><i class="fas fa-book-open"></i> Courses & Content</a></li>
+          <li><a href="#" data-section="accessibility"><i class="fas fa-universal-access"></i> Accessibility Tools</a></li>
+          <li><a href="#" data-section="support"><i class="fas fa-headset"></i> Support & Complaints</a></li>
+          <li><a href="#" data-section="resources"><i class="fas fa-hands-helping"></i> Assistive Resources</a></li>
+          <li><a href="#" data-section="analytics"><i class="fas fa-chart-bar"></i> Analytics & Reports</a></li>
+          <li><a href="#" data-section="roles"><i class="fas fa-user-shield"></i> Roles & Permissions</a></li>
+          <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> System Settings</a></li>
+        </ul>
+      </nav>
 
-      <!-- Courses Tab -->
-      <section id="courses" class="tab">
-        <h2>Manage Courses</h2>
-        <form id="course-form">
-          <div class="form-group">
-            <label for="course-title">Course Title</label>
-            <input type="text" id="course-title" required placeholder="e.g., Python for Beginners" />
+      <div class="sidebar-footer">
+        <div class="admin-info">
+          <img src="assets/admin-avatar.png" alt="Admin avatar" width="40" height="40">
+          <div>
+            <strong>Admin User</strong>
+            <small>Super Administrator</small>
           </div>
-          <div class="form-group">
-            <label for="course-desc">Description</label>
-            <textarea id="course-desc" rows="3" required></textarea>
-          </div>
-          <button type="submit">Create Course</button>
-        </form>
-
-        <h3 style="margin-top: 2rem;">Existing Courses</h3>
-        <div id="course-list">
-          <!-- Filled by JS -->
         </div>
-      </section>
+        <button id="logout-btn" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </aside>
 
-      <!-- Videos Tab -->
-      <section id="videos" class="tab">
-        <h2>Upload Video</h2>
-        <div class="form-group">
-          <label for="video-course">Select Course <span style="color: red;">*</span></label>
-          <select id="video-course" required>
-            <option value="">-- Choose a course --</option>
-            <!-- Filled by JS -->
-          </select>
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h1 id="page-title">Dashboard Overview</h1>
         </div>
-        <div class="upload-area" id="video-drop-area">
-          <p><i class="fas fa-video fa-3x"></i></p>
-          <p>Drag & drop video or <strong>click to select</strong></p>
-          <input type="file" id="video-input" accept="video/*" hidden />
+
+        <div class="topbar-right">
+          <!-- Desktop Only: Search, Notifications, Messages -->
+          <div class="desktop-nav-items">
+            <div class="search-box">
+              <input type="text" placeholder="Search..." aria-label="Search">
+              <i class="fas fa-search"></i>
+            </div>
+            <button class="topbar-btn" aria-label="Notifications">
+              <i class="fas fa-bell"></i><span class="badge">3</span>
+            </button>
+            <button class="topbar-btn" aria-label="Messages">
+              <i class="fas fa-envelope"></i><span class="badge">5</span>
+            </button>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="profile-dropdown">
+            <button class="profile-btn">
+              <img src="assets/admin-avatar.png" alt="Admin">
+            </button>
+            <div class="dropdown-menu">
+              <a href="#"><i class="fas fa-user"></i> Profile</a>
+              <a href="#"><i class="fas fa-cog"></i> Settings</a>
+              <hr>
+
+              <!-- Mobile-only items inside dropdown -->
+              <div class="mobile-only-items">
+                <a href="#" class="mobile-notif"><i class="fas fa-bell"></i> Notifications <span class="badge">3</span></a>
+                <a href="#" class="mobile-msg"><i class="fas fa-envelope"></i> Messages <span class="badge">5</span></a>
+                <hr>
+                <a href="#" id="mobile-themeBtn"><i class="fas fa-moon"></i> Dark Mode</a>
+                <a href="#" id="mobile-ttsBtn"><i class="fas fa-volume-up"></i> Text-to-Speech</a>
+                <hr>
+              </div>
+
+              <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+
+          <!-- Desktop Only: Accessibility Buttons -->
+          <div class="access-toggle desktop-only">
+            <button id="themeBtn" class="access-btn" aria-label="Toggle Dark Mode">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button id="ttsBtn" class="access-btn" aria-label="Toggle Text-to-Speech">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
         </div>
-        <div id="video-preview" class="preview"></div>
+      </header>
 
-        <form id="video-upload-form" style="display: none; margin-top: 1rem;">
-          <div class="form-group">
-            <label for="video-title">Video Title</label>
-            <input type="text" id="video-title" required />
+      <!-- Content Area (unchanged) -->
+      <div class="content-area">
+        <section id="overview" class="page active">
+          <div class="welcome-header">
+            <h2>Welcome back, Admin!</h2>
+            <p>Here's what's happening with EDU-BRIDGE today.</p>
           </div>
-          <div class="form-group">
-            <label for="video-caption">Caption (Subtitle)</label>
-            <textarea id="video-caption" rows="4"></textarea>
+          <div class="stats-grid">
+            <div class="stat-card"><i class="fas fa-users"></i><div><h3>1,248</h3><p>Total Users</p></div></div>
+            <div class="stat-card"><i class="fas fa-eye"></i><div><h3>89</h3><p>Active Today</p></div></div>
+            <div class="stat-card"><i class="fas fa-ticket-alt"></i><div><h3>12</h3><p>New Tickets</p></div></div>
+            <div class="stat-card"><i class="fas fa-volume-up"></i><div><h3>TTS</h3><p>Top Feature</p></div></div>
           </div>
-          <button type="submit">Upload Video to Course</button>
-        </form>
-
-        <h3 style="margin-top: 2rem;">Uploaded Videos</h3>
-        <div id="video-list"></div>
-      </section>
-
-      <!-- Books Tab -->
-      <section id="books" class="tab">
-        <h2>Upload Book (PDF/eBook)</h2>
-        <div class="form-group">
-          <label for="book-course">Select Course <span style="color: red;">*</span></label>
-          <select id="book-course" required>
-            <option value="">-- Choose a course --</option>
-          </select>
-        </div>
-        <div class="upload-area" id="book-drop-area">
-          <p><i class="fas fa-book fa-3x"></i></p>
-          <p>Drag & drop PDF or <strong>click to select</strong></p>
-          <input type="file" id="book-input" accept=".pdf,.epub" hidden />
-        </div>
-        <div id="book-preview" class="preview"></div>
-
-        <form id="book-upload-form" style="display: none; margin-top: 1rem;">
-          <div class="form-group">
-            <label for="book-title">Book Title</label>
-            <input type="text" id="book-title" required />
+          <div class="charts-row">
+            <div class="chart-card"><h3>Daily Active Users</h3><div class="chart-placeholder">Line Chart</div></div>
+            <div class="chart-card"><h3>Feature Usage</h3><div class="chart-placeholder">Bar Chart</div></div>
           </div>
-          <div class="form-group">
-            <label for="book-author">Author</label>
-            <input type="text" id="book-author" required />
+          <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+              <button class="action-btn"><i class="fas fa-plus"></i> Add Content</button>
+              <button class="action-btn"><i class="fas fa-user-plus"></i> Add User</button>
+              <button class="action-btn"><i class="fas fa-search"></i> Run Scan</button>
+            </div>
           </div>
-          <button type="submit">Upload Book to Course</button>
-        </form>
-
-        <h3 style="margin-top: 2rem;">Uploaded Books</h3>
-        <div id="book-list"></div>
-      </section>
-
-      <!-- Blogs Tab -->
-      <section id="blogs" class="tab">
-        <h2>Create Blog Post</h2>
-        <div class="form-group">
-          <label for="blog-course">Assign to Course (Optional)</label>
-          <select id="blog-course">
-            <option value="">-- No course (General) --</option>
-          </select>
-        </div>
-        <form id="blog-form">
-          <div class="form-group">
-            <label for="blog-title">Blog Title</label>
-            <input type="text" id="blog-title" required />
-          </div>
-          <div class="form-group">
-            <label for="blog-content">Content (Supports HTML)</label>
-            <textarea id="blog-content" rows="10" required></textarea>
-          </div>
-          <button type="submit">Publish Blog</button>
-        </form>
-
-        <h3 style="margin-top: 2rem;">Published Blogs</h3>
-        <div id="blog-list"></div>
-      </section>
+        </section>
+        <section id="users" class="page">
+          <h2>User Management</h2>
+          <p>User list coming soon...</p>
+        </section>
+      </div>
     </main>
+  </div>
 
-    <!-- Footer -->
-    <footer role="contentinfo">
-      <div class="footer-content">
-        <p class="tts-content">© 2025 EDU-BRIDGE. All rights reserved.</p>
-        <p class="tts-content">
-          Proudly compliant with <strong>WCAG 2.1 AA</strong>.
-        </p>
-      </div>
-    </footer>
+  <script src="js/accessibility.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+  <script>
+      // Your existing JS (unchanged)
+      document.addEventListener("DOMContentLoaded", () => {
+        const hamburgerBtn = document.getElementById("hamburgerBtn");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarClose = document.querySelector(".sidebar-close");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+        const pageTitle = document.getElementById("page-title");
 
-    <script src="js/accessibility.js"></script>
-    <script src="js/admin.js"></script>
-    <script>
-      // Basic Tab System
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-          btn.classList.add('active');
-          document.getElementById(btn.dataset.tab).classList.add('active');
+        hamburgerBtn.addEventListener("click", () => {
+          sidebar.classList.add("open");
+          sidebar.setAttribute("aria-hidden", "false");
+          hamburgerBtn.setAttribute("aria-expanded", "true");
+        });
+
+        const closeSidebar = () => {
+          sidebar.classList.remove("open");
+          sidebar.setAttribute("aria-hidden", "true");
+          hamburgerBtn.setAttribute("aria-expanded", "false");
+        };
+
+        sidebarClose.addEventListener("click", closeSidebar);
+
+        document.addEventListener("click", (e) => {
+          if (
+            sidebar.classList.contains("open") &&
+            !sidebar.contains(e.target) &&
+            !hamburgerBtn.contains(e.target)
+          ) {
+            closeSidebar();
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            navLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+            pageTitle.textContent = link.textContent.trim();
+            closeSidebar();
+          });
+        });
+
+        document.getElementById("logout-btn").addEventListener("click", () => {
+          if (confirm("Logout from admin panel?")) {
+            window.location.href = "index.html";
+          }
         });
       });
 
-      // Dark Mode Toggle
-      document.getElementById('dark-mode-toggle').addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-      });
-
-      // Simple course population (for demo)
-      const coursesSelects = document.querySelectorAll('#video-course, #book-course, #blog-course');
-      const demoCourses = ['Python', 'Web Development Bootcamp', 'Data Science Mastery', 'UI/UX Design Pro'];
-      coursesSelects.forEach(select => {
-        demoCourses.forEach(course => {
-          const opt = document.createElement('option');
-          opt.value = course.toLowerCase().replace(/\s+/g, '-');
-          opt.textContent = course;
-          select.appendChild(opt);
+      // Forward mobile accessibility clicks to real buttons
+      document
+        .getElementById("mobile-themeBtn")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.getElementById("themeBtn").click();
         });
-      });
+      document
+        .getElementById("mobile-ttsBtn")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.getElementById("ttsBtn").click();
+        });
     </script>
-  </body>
+
+</body>
 </html>
+
