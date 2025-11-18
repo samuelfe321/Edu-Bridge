@@ -11,34 +11,56 @@
 <body>
   
   <!-- Header -->
-  <header role="banner">
-    <div class="header-top">
-      <div class="container header-content">
+  <header role="banner" class="header-topbar">
+    <div class="top-bar container">
+      <!-- Logo -->
+      <div class="logo">
         <h1>EDU-BRIDGE</h1>
-        <nav role="navigation" aria-label="Main navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" aria-current="page">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li class="auth-item">
-              <a href="userLogin.html">Sign in</a>
-              <!-- Accessibility Toolbar – Right next to Sign in -->
-              <div class="accessibility-toolbar-inline" role="region" aria-label="Accessibility controls">
-                <button id="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-                  <i class="fas fa-moon"></i>
-                </button>
-                <button id="tts-toggle" aria-label="Toggle text-to-speech" aria-pressed="false">
-                  <i class="fas fa-volume-up"></i>
-                </button>
-              </div>
-            </li>
-          </ul>
+      </div>
+
+      <!-- Desktop Navigation (Centered) -->
+      <nav class="desktop-nav" id="nav" aria-label="Main navigation">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="userLogin.html">Sign in</a></li>
+        <li><div class="accessibility-toolbar-inline" id="accessibility-toolbar-inline" role="region" aria-label="Accessibility controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+              <i class="fas fa-moon"></i> 
+            </button>
+            <button id="tts-toggle" aria-label="Toggle text-to-speech" aria-pressed="false">
+              <i class="fas fa-volume-up"></i> 
+            </button>
+          </div></li>  
+      </nav>
+
+      <!-- Mobile Hamburger + Dropdown (Dashboard Style) -->
+      <div class="dropdown" id="mobile-menu">
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="dropdown-content">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+          <a href="features.html"><i class="fas fa-universal-access"></i> Features</a>
+          <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+          <a href="userLogin.html"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+          <hr>
+          <div class="accessibility-toolbar-inline" role="region" aria-label="Accessibility controls">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button id="tts-toggle" aria-label="Toggle text-to-speech" aria-pressed="false">
+              <i class="fas fa-volume-up"></i> 
+            </button>
+          </div>
         </nav>
       </div>
     </div>
 
-    <!-- Hero (inside header) -->
+    <!-- Hero Section -->
     <div class="hero" aria-labelledby="hero-heading">
       <div class="hero-content">
         <h2 id="hero-heading">About <strong>EDU-BRIDGE</strong></h2>
@@ -47,8 +69,8 @@
         </p>
       </div>
     </div>
-  </header>
 
+  </header>
   <main id="main-content" tabindex="-1">
     <section aria-labelledby="about-heading">
       <h2 id="about-heading">Our Mission</h2>
@@ -155,5 +177,7 @@
 
   <script src="js/accessibility.js"></script>
   <script src="js/nav-highlight.js"></script>
+  <script src="js/mobile-menu.js">
+  </script>
 </body>
 </html>

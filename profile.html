@@ -73,6 +73,8 @@
         border-radius: 6px;
         z-index: 1000;
         border: 1px solid var(--border);
+        background-color: var(--primary);
+      
       }
       .dropdown.open .dropdown-content {
         display: block;
@@ -254,6 +256,9 @@
         .quick-actions {
           grid-template-columns: 1fr;
         }
+        #accessibility-toolbar-inline{
+          display: none;
+        }
       }
     </style>
   </head>
@@ -292,6 +297,7 @@
           <div style="font-size: 0.85rem; opacity: 0.9">Student</div>
         </div>
       </div>
+      
       <div class="dropdown" id="user-menu">
         <div class="hamburger" aria-label="Menu" aria-expanded="false">
           <i class="fas fa-bars"></i>
@@ -322,28 +328,51 @@
                 ><i class="fas fa-sign-out-alt"></i> Logout</a
               >
             </li>
+            <li>
+              <div
+                class="accessibility-toolbar-inline"
+                role="region"
+                aria-label="Accessibility controls"
+              >
+                <button
+                  id="dark-mode-toggle"
+                  aria-label="Toggle dark mode"
+                  aria-pressed="false"
+                >
+                  <i class="fas fa-moon"></i>
+                </button>
+                <button
+                  id="tts-toggle"
+                  aria-label="Toggle text-to-speech"
+                  aria-pressed="false"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
           </ul>
         </nav>
         <div
-          class="accessibility-toolbar-inline"
-          role="region"
-          aria-label="Accessibility controls"
-        >
-          <button
-            id="dark-mode-toggle"
-            aria-label="Toggle dark mode"
-            aria-pressed="false"
-          >
-            <i class="fas fa-moon"></i>
-          </button>
-          <button
-            id="tts-toggle"
-            aria-label="Toggle text-to-speech"
-            aria-pressed="false"
-          >
-            <i class="fas fa-volume-up"></i>
-          </button>
-        </div>
+                class="accessibility-toolbar-inline"
+                id="accessibility-toolbar-inline"
+                role="region"
+                aria-label="Accessibility controls"
+              >
+                <button
+                  id="dark-mode-toggle"
+                  aria-label="Toggle dark mode"
+                  aria-pressed="false"
+                >
+                  <i class="fas fa-moon"></i>
+                </button>
+                <button
+                  id="tts-toggle"
+                  aria-label="Toggle text-to-speech"
+                  aria-pressed="false"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
       </div>
     </div>
 
