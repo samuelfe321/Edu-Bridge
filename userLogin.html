@@ -111,7 +111,7 @@
         </div>
 
         <p class="create-account">
-          <a href="reg.html">Create Account</a>
+          <a href="userReg.html">Create Account</a>
         </p>
       </form>
     </main>
@@ -148,23 +148,47 @@
         "use strict";
 
         // ==============================================
-        // 1. ADD DEMO USER (ONCE)
+        // 1. ADD DEMO USERS (ONCE)
         // ==============================================
 
-        (function addDemoUser() {
-          let demoUser = {
-            name: "Collins Samuel",
-            email: "Samuel@gmail.com",
-            password: "556678",
-            role: "student",
-            joined: "2025-01-10T00:00:00Z",
-          };          
+        (function addDemoUsers() {
+          let demoUsers = [
+            {
+              name: "Collins Samuel",
+              email: "Samuel@gmail.com",
+              password: "556678",
+              role: "student",
+              joined: "2025-01-10T00:00:00Z",
+            },
+            {
+              name: "Frank Ekpo",
+              email: "frank@example.com",
+              password: "password123",
+              role: "student",
+              joined: "2025-01-15T00:00:00Z",
+            },
+            {
+              name: "Chidubem Okoro",
+              email: "Chidubem@example.com",
+              password: "securepass",
+              role: "teacher",
+              joined: "2025-01-01T00:00:00Z",
+            },
+          ];          
 
           let users = JSON.parse(localStorage.getItem("users") || "[]");
-          if (!users.some((u) => u.email === demoUser.email)) {
-            users.push(demoUser);
+          let addedCount = 0;
+
+          demoUsers.forEach(demoUser => {
+            if (!users.some((u) => u.email === demoUser.email)) {
+              users.push(demoUser);
+              addedCount++;
+            }
+          });
+
+          if (addedCount > 0) {
             localStorage.setItem("users", JSON.stringify(users));
-            console.log("Demo user added: user@edubridge.ng");
+            console.log(`${addedCount} demo user(s) added.`);
           }
         })();
 
@@ -206,10 +230,10 @@
           }
         });
 
-        // Optional: Pre-fill demo credentials
+        // Optional: Pre-fill demo credentials (using the first one)
         emailInput.value = "Samuel@gmail.com";
         passwordInput.value = "556678";
       })();
     </script>
-  </body>
+      </body>
 </html>

@@ -429,7 +429,7 @@
               <a href="#" id="my-videos"><i class="fas fa-video"></i> Videos</a>
             </li>
             <li>
-              <a href="userLogin.html" id="logout"
+              <a href="index.html" id="logout"
                 ><i class="fas fa-sign-out-alt"></i> Logout</a
               >
             </li>
@@ -597,7 +597,7 @@
         const user = JSON.parse(localStorage.getItem("currentUser"));
         if (!user) {
           alert("Please log in first.");
-          window.location.href = "user-login.html";
+          window.location.href = "userLogin.html";
           return;
         }
 
@@ -784,7 +784,7 @@
         const handleLogout = () => {
           if (confirm("logout?")) {
             localStorage.removeItem("currentUser");
-            window.location.href = "userLogin.html";
+            window.location.href = "index.html";
           }
         };
         document.getElementById("logout").addEventListener("click", (e) => {
